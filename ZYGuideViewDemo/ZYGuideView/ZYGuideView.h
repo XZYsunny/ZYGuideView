@@ -9,13 +9,18 @@
 #import <UIKit/UIKit.h>
 
 @interface ZYGuideView : UIView
+
+/**
+ *  创建guideView
+ */
++ (instancetype)shardZYGuideView;
 /**
  *  带按钮的引导页
  *
  *  @param imageNames      背景图片数组
  *  @param enterBtnImageName 最后一页进入按钮，nil 的不显示，@""为透明button
  */
-- (instancetype)initWithImages:(NSMutableArray *)imageNames EnterBtnImageName:(NSString *)enterBtnImageName;
+- (void)createImageNamesArray:(NSMutableArray *)imageNames EnterBtnImageName:(NSString *)enterBtnImageName;
 /**
  *  在最后一页再次向右滑动是否隐藏引导页
  *  default YES

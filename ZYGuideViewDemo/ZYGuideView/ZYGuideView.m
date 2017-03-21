@@ -19,10 +19,11 @@
 
 @implementation ZYGuideView
 
-- (instancetype)initWithImages:(NSMutableArray *)imageNames EnterBtnImageName:(NSString *)enterBtnImageName{
-    self = [super init];
-    if (self) {
-        self.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height);
++ (instancetype)shardZYGuideView{
+    ZYGuideView *guideView = [[ZYGuideView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height)];
+    return guideView;
+}
+- (void)createImageNamesArray:(NSMutableArray *)imageNames EnterBtnImageName:(NSString *)enterBtnImageName{
         self.isScrollOut = NO;
         self.imageNamesArray = imageNames;
         self.isShowPageControl = NO;
@@ -30,8 +31,6 @@
         _currentColor = [UIColor blackColor];
         _nomalColor = [UIColor lightGrayColor];
         [self createUI];
-    }
-    return self;
 }
 
 - (void)setIsShowPageControl:(BOOL)isShowPageControl{
@@ -49,11 +48,15 @@
 }
 - (void)setCurrentColor:(UIColor *)currentColor{
     _currentColor = currentColor;
-    self.pageControl.currentPageIndicatorTintColor = currentColor;
+    if (_isShowPageControl) {
+        self.pageControl.currentPageIndicatorTintColor = currentColor;
+    }
 }
 - (void)setNomalColor:(UIColor *)nomalColor{
     _nomalColor = nomalColor;
-    self.pageControl.pageIndicatorTintColor = nomalColor;
+    if (_isShowPageControl) {
+        self.pageControl.pageIndicatorTintColor = nomalColor;
+    }
 }
 - (void)setIsScrollOut:(BOOL)isScrollOut{
     _isScrollOut = isScrollOut;
@@ -62,13 +65,14 @@
     self.backgroundColor = [UIColor whiteColor];
     if ([self isFirstLauch]) {
         [self createScrollView];
+        UIWindow *window = [UIApplication sharedApplication].windows.lastObject;
+        [window addSubview:self];
     }else{
         [self removeFromSuperview];
     }
 }
 #pragma mark - 判断需不需要显示欢迎页
 -(BOOL)isFirstLauch{
-    return YES;
     // 获取当前版本号
     NSDictionary *infoDic = [[NSBundle mainBundle] infoDictionary];
     NSString *currentAppVersion = infoDic[@"CFBundleShortVersionString"];

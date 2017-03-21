@@ -521,6 +521,7 @@
 				A3FADDDE1E7FD30200BBC6CC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A3FADDDF1E7FD30200BBC6CC /* Build configuration list for PBXNativeTarget "ZYGuideViewDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -529,6 +530,7 @@
 				A3FADDE11E7FD30200BBC6CC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A3FADDE21E7FD30200BBC6CC /* Build configuration list for PBXNativeTarget "ZYGuideViewDemoUITests" */ = {
 			isa = XCConfigurationList;
@@ -537,6 +539,7 @@
 				A3FADDE41E7FD30200BBC6CC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
